@@ -15,9 +15,10 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/paytmdb")
+  .connect(MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB Connected");
     app.listen(PORT, () => {
@@ -30,9 +31,3 @@ mongoose
       console.log(`🚀 Server running on port ${PORT} (without DB)`);
     });
   });
-
-  mongoose
-  .connect(process.env.MONGO_URI, {
-    serverSelectionTimeoutMS: 30000,
-    socketTimeoutMS: 45000,
-  })
