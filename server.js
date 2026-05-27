@@ -30,3 +30,9 @@ mongoose
       console.log(`🚀 Server running on port ${PORT} (without DB)`);
     });
   });
+
+  mongoose
+  .connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 30000,
+    socketTimeoutMS: 45000,
+  })
